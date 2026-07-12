@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+dist
+dist-ssr
+*.local
+.vscode/*
+!.vscode/tasks.json
+!.vscode/extensions.json
+.eslintcache
+.npm-cache
