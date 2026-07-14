@@ -9,7 +9,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="index.css" />
   <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
   <link rel="manifest" href="manifest.json">
@@ -24,223 +24,318 @@
         <span class="brand-sub">Invoice Manager</span>
       </div>
       <div class="action-buttons">
-        <button id="btn-theme" class="btn btn-secondary">
-          Theme
-        </button>
-        <button id="btn-reset" class="btn btn-secondary">
-          Reset
-        </button>
-        <button id="btn-print" class="btn btn-primary">
-          🖨️ Print
-        </button>
+        <a href="invoice1/index.html" class="btn btn-secondary">📄 Switch</a>
+        <button id="btn-reset" class="btn btn-secondary">Reset</button>
+        <button id="btn-print" class="btn btn-primary">🖨️ Print</button>
       </div>
     </div>
   </div>
 
-  <!-- Main Invoice Layout -->
-  <div id="invoice-page" class="invoice-container clean-white">
-    <!-- Invoice Header Grid -->
-    <div class="invoice-header">
-      <div class="header-top-row">
-        <div class="header-gst">
-          <strong>GST No.</strong> <span contenteditable="true" id="company-gst">24AUYPK6789Q1Z5</span>
-          <div class="header-jurisdiction">Subject to Surat Jurisdiction</div>
+  <!-- A4 Print Sheet Container -->
+  <div id="invoice-sheet" class="invoice-sheet">
+
+    <!-- Header: QR Code, Company Details, Invoice Labels -->
+    <div class="header-grid border-bottom">
+      <div class="header-left">
+        <!-- QR Code Placeholder (Click to upload) -->
+        <div class="qr-container" id="qr-upload-box" title="Click to upload QR Code image">
+          <span class="qr-placeholder-text" id="qr-text">Click to<br>upload<br>QR Code</span>
+          <img id="qr-image" class="qr-image" alt="QR Code" />
+          <input type="file" id="qr-file-input" accept="image/*" class="no-print" style="display: none;" />
         </div>
-        <div class="header-invocations">
-          || શ્રી ગણેશાય નમઃ || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || શ્રી ખોડિયાર માં નમઃ ||
+        <span class="copy-type" contenteditable="true" id="copy-type-label">DEX</span>
+      </div>
+
+      <div class="header-center">
+        <div class="deity-invocation" contenteditable="true">!! Shree Ganeshaya Namah !!</div>
+        <h1 class="company-title" contenteditable="true" id="company-name">JAY CREATION</h1>
+        <div class="company-meta-row">
+          <strong>GSTIN:</strong><span contenteditable="true" id="company-gst">24AUYPK6789Q1Z5</span>
+          <strong>Udyam (MSME) No.:</strong><span contenteditable="true" id="company-udyam">GJ-05-0593906 (MICRO)</span>
+          <strong>PAN NO.:</strong><span contenteditable="true" id="company-pan">AUYPK6789Q</span>
         </div>
-        <div class="header-tax-title">
-          <div class="tax-invoice-label">TAX INVOICE</div>
-          <div class="header-phone"><strong>(M)</strong> <span contenteditable="true" id="company-phone">92751 82042</span></div>
+        <div class="company-address-row" contenteditable="true" id="company-address">
+          224 3RD FLOOR BHAGYODAY INDUSTRIES, B/H DR WORLD AAI MATA ROAD, SURAT
         </div>
       </div>
 
-      <div class="header-main-row">
-        <!-- Ganesha Icon Column: Hidden -->
-        <div class="header-deity deity-left">
-          <svg class="deity-svg" viewBox="0 0 100 100">
-            <!-- Minimalist Ganesha Line Art -->
-            <path d="M50,15 C40,15 35,25 35,35 C35,45 42,50 42,55 C42,62 38,68 32,68 C28,68 25,65 25,60 C25,52 30,48 28,40 C26,35 20,38 18,45 C15,55 20,75 32,75 C45,75 48,65 48,58 C48,52 46,48 48,42 C50,38 52,38 54,42 C56,48 54,52 54,58 C54,65 57,75 70,75 C82,75 87,55 84,45 C82,38 76,35 74,40 C72,48 77,52 77,60 C77,65 74,68 70,68 C64,68 60,62 60,55 C60,50 67,45 67,35 C67,25 62,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
-            <path d="M50,22 C44,22 43,28 46,30 C48,31 52,31 54,30 C57,28 56,22 50,22 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2" />
-            <path d="M42,28 Q50,26 58,28" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M50,28 L50,38" fill="none" stroke="currentColor" stroke-width="2" />
-            <circle cx="44" cy="33" r="2.5" fill="currentColor" />
-            <circle cx="56" cy="33" r="2.5" fill="currentColor" />
-            <path d="M46,45 Q50,49 54,45" fill="none" stroke="currentColor" stroke-width="1.5" />
-          </svg>
-        </div>
+      <div class="header-right">
+        <div><strong>PHONES:</strong></div>
+        <div class="phone-number" contenteditable="true" id="company-phone">9275182042</div>
+      </div>
+    </div>
 
-        <!-- Title/Brand Info -->
-        <div class="header-brand-info">
-          <h1 class="invoice-title" contenteditable="true" id="company-name">JAY CREATION</h1>
-          <p class="invoice-subtitle" contenteditable="true" id="company-subtitle">All Type of : Embroidery & Sequence Works</p>
-          <p class="invoice-address" contenteditable="true" id="company-address">224, 3rd Floor, Bhagyoday Industries, B/H. DR World, Aai Mata Road, Surat.</p>
-        </div>
+    <!-- TAX INVOICE Title Row -->
+    <div class="tax-invoice-banner border-bottom" contenteditable="true">
+      TAX INVOICE
+    </div>
 
-        <!-- Hanuman Icon Column: Hidden -->
-        <div class="header-deity deity-right">
-          <svg class="deity-svg" viewBox="0 0 100 100">
-            <!-- Minimalist Hanuman/Deity Line Art -->
-            <path d="M50,15 C45,15 42,20 40,25 C38,30 38,36 41,40 C43,43 45,45 42,48 C38,52 35,58 35,65 C35,72 40,78 50,78 C60,78 65,72 65,65 C65,58 62,52 58,48 C55,45 57,43 59,40 C62,36 62,30 60,25 C58,20 55,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
-            <path d="M50,22 L50,38" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M46,30 L54,30" fill="none" stroke="currentColor" stroke-width="2" />
-            <circle cx="45" cy="33" r="2" fill="currentColor" />
-            <circle cx="55" cy="33" r="2" fill="currentColor" />
-            <!-- Mace (Gada) or Tilak detail -->
-            <path d="M50,15 L50,8" fill="none" stroke="currentColor" stroke-width="2" />
-            <circle cx="50" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M38,62 Q50,56 62,62" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M45,68 Q50,72 55,68" fill="none" stroke="currentColor" stroke-width="1.5" />
-          </svg>
+    <!-- Buyer & Bill Details Block -->
+    <div class="billing-metadata-grid border-bottom">
+      <!-- Buyer Column -->
+      <div class="billing-col">
+        <div class="field-row">
+          <span class="field-label">Buyer:</span>
+          <div class="field-value" contenteditable="true" id="buyer-name" placeholder="Buyer Company Name">PINTU FASHION</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label"></span>
+          <div class="field-value" contenteditable="true" id="buyer-address" placeholder="Buyer Address (Line 1)">PLOT NO.5/A,5/B,43/C 2ND FLOOR NILKANTH</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label"></span>
+          <div class="field-value" contenteditable="true" id="buyer-address-2" placeholder="Buyer Address (Line 2)">SOC.VED ROAD NANI BAHUCHARAJI MANDIR</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label"></span>
+          <div class="field-value" contenteditable="true" id="buyer-address-3" placeholder="Buyer Address (Line 3)">SURAT</div>
+        </div>
+        <div class="field-row" style="margin-top: 6px;">
+          <span class="field-label">GSTIN:</span>
+          <div class="field-value" contenteditable="true" id="buyer-gst" placeholder="Buyer GSTIN">24AZNPG8820A1ZN</div>
+        </div>
+      </div>
+
+      <!-- Vertical Divider -->
+      <div class="billing-metadata-divider"></div>
+
+      <!-- Bill Metadata Column -->
+      <div class="metadata-col">
+        <div class="field-row">
+          <span class="field-label-right">BILL NO.:</span>
+          <div class="field-value-solid" contenteditable="true" id="bill-no">9</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label-right">CHALLAN :</span>
+          <div class="field-value-solid" contenteditable="true" id="challan-no">9</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label-right">DATE :</span>
+          <div class="field-value-solid" contenteditable="true" id="bill-date">10/07/26</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label-right">ORDER NO:</span>
+          <div class="field-value-solid" contenteditable="true" id="order-no" placeholder="Order details"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-label-right" style="font-size: 9.5px;">Place of Supply:</span>
+          <div class="field-value-solid" contenteditable="true" id="place-of-supply">24-Gujarat</div>
         </div>
       </div>
     </div>
 
-    <!-- Bill & Client Details Block -->
-    <div class="invoice-billing-block">
-      <div class="billing-left">
-        <div class="billing-row">
-          <span class="billing-label editable-field" contenteditable="true">M/s.</span>
-          <div class="billing-value editable-field" contenteditable="true" id="client-name" placeholder="Customer Name"></div>
+    <!-- Consignee Details Block -->
+    <div class="single-line-grid border-bottom">
+      <div class="single-line-col">
+        <div class="field-row">
+          <span class="field-label-narrow">Consignee:</span>
+          <div class="field-value" contenteditable="true" id="consignee-name" placeholder="Consignee details (if different)"></div>
         </div>
-        <div class="billing-row">
-          <span class="billing-label">Address:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="client-address" placeholder="Customer Address"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label">GST No.:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="client-gst" placeholder="Customer GST No."></div>
-        </div>
-      </div>
-      <div class="billing-right">
-        <div class="billing-row">
-          <span class="billing-label text-right">Bill No.:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="bill-no"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label text-right">Date:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="bill-date"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label text-right">Cha. No.:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="challan-no"></div>
+        <div class="field-row">
+          <span class="field-label-narrow">GSTIN:</span>
+          <div class="field-value" contenteditable="true" id="consignee-gst" placeholder="Consignee GSTIN"></div>
         </div>
       </div>
     </div>
 
-    <!-- Invoice Particulars Table -->
-    <div class="invoice-table-wrapper">
-      <table class="invoice-table" id="items-table">
+    <!-- Agent & Address Block -->
+    <div class="single-line-grid border-bottom">
+      <div class="single-line-col">
+        <div class="field-row">
+          <span class="field-label-narrow">AGENT: </span>
+          <div class="field-value" contenteditable="true" id="agent-name" placeholder="Agent Name"></div>
+          <span class="field-label" style="text-align: right; width: 80px; margin-right: 8px;">PHONES:</span>
+          <div class="field-value" contenteditable="true" id="agent-phone" placeholder="Agent Phone"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-label-narrow">ADDRESS: </span>
+          <div class="field-value" contenteditable="true" id="agent-address" placeholder="Agent Address"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LR / Transport details Block -->
+    <div class="lr-transporter-grid border-bottom">
+      <div class="lr-col border-right">
+        <div class="field-row">
+          <span class="field-label" style="width: 80px;">L.R. NO. :</span>
+          <div class="field-value" contenteditable="true" id="lr-no" placeholder="LR Number"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-label" style="width: 80px;">TRANSPORT:</span>
+          <div class="field-value" contenteditable="true" id="transport-name" placeholder="Transporter Name">OFFICE DELIVERY</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label" style="width: 80px;">STATION:</span>
+          <div class="field-value" contenteditable="true" id="station-name" placeholder="Destination Station">SURAT</div>
+        </div>
+      </div>
+      <div class="lr-col border-right">
+        <div class="field-row">
+          <span class="field-label" style="width: 70px;">LR DATE:</span>
+          <div class="field-value" contenteditable="true" id="lr-date" placeholder="LR Date">10/07/26</div>
+        </div>
+        <div class="field-row">
+          <span class="field-label" style="width: 70px;">CASE NO:</span>
+          <div class="field-value" contenteditable="true" id="case-no" placeholder="Case details">9x1</div>
+        </div>
+      </div>
+      <div class="lr-col">
+        <div class="field-row">
+          <span class="field-label" style="width: 60px;">WEIGHT :</span>
+          <div class="field-value" contenteditable="true" id="weight-val" placeholder="Weight details"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-label" style="width: 60px;">FREIGHT:</span>
+          <div class="field-value" contenteditable="true" id="freight-val" placeholder="Freight details"></div>
+        </div>
+        <div class="field-row">
+          <span class="field-label" style="width: 60px;">HSN:</span>
+          <div class="field-value" contenteditable="true" id="hsn-val" placeholder="HSN Code">540752</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Particulars Table Container -->
+    <div class="table-container border-bottom">
+      <table class="invoice-table" id="invoice-items-table">
         <thead>
-          <tr>
-            <th class="col-cha">Cha. No.</th>
-            <th class="col-date">Received Date</th>
-            <th class="col-particulars">PARTICULARS</th>
-            <th class="col-pieces">Pieces</th>
-            <th class="col-rate">Rate</th>
-            <th class="col-amount">Amount</th>
+          <tr class="border-bottom">
+            <th class="col-desc">DESCRIPTION</th>
+            <th class="col-pack">PACKING</th>
+            <th class="col-pcs">PCS</th>
+            <th class="col-cut">CUT</th>
+            <th class="col-mts">MTS</th>
+            <th class="col-rate">RATE</th>
+            <th class="col-per">PER</th>
+            <th class="col-amt">AMOUNT</th>
           </tr>
         </thead>
         <tbody id="invoice-items-body">
-          <!-- Dynamic rows will be inserted here. -->
+          <!-- Dynamic rows inserted here -->
         </tbody>
       </table>
     </div>
 
-    <!-- Add Row Action (hidden in print) -->
-    <div class="table-actions no-print">
-      <button id="btn-add-row" class="btn btn-secondary btn-sm">
-        + Add Line Item
-      </button>
+    <!-- Dynamic Actions (No Print) -->
+    <div class="table-actions-bar no-print border-bottom">
+      <button id="btn-add-row" class="btn btn-secondary btn-sm">+ Add Row</button>
     </div>
 
-    <!-- Invoice Footer & Summary Grid -->
-    <div class="invoice-summary-grid">
-      <!-- Left Footer: PAN and Bank Details -->
-      <div class="summary-left">
-        <div class="details-row">
-          <span class="details-label"><strong>PAN No. :</strong></span>
-          <div class="details-val" contenteditable="true" id="company-pan">AUYPK6789Q</div>
-        </div>
-        <div class="details-bank-section">
-          <div class="details-row">
-            <span class="details-label"><strong>BANK NAME :</strong></span>
-            <div class="details-val" contenteditable="true" id="bank-name" placeholder="Enter Bank Name"></div>
-          </div>
-          <div class="details-row">
-            <span class="details-label"><strong>A/c. No. :</strong></span>
-            <div class="details-val" contenteditable="true" id="bank-ac" placeholder="Enter Account Number"></div>
-          </div>
-          <div class="details-row">
-            <span class="details-label"><strong>IFSC Code :</strong></span>
-            <div class="details-val" contenteditable="true" id="bank-ifsc" placeholder="Enter IFSC Code"></div>
-          </div>
-        </div>
+    <!-- Bank Details & Remarks (Printed above subtotal) -->
+    <div class="bank-remark-container border-bottom">
+      <div class="bank-row">
+        <strong style="margin-right: 8px;">Bank Name :</strong>
+        <div class="field-value" contenteditable="true" id="bank-details-name" placeholder="Bank Name">ICICI Bank</div>
+        <strong style="margin-right: 8px;">Account No :</strong>
+        <div class="field-value" contenteditable="true" id="bank-details-acno" placeholder="Bank A/C Number">655705500241</div>
       </div>
-
-      <!-- Right Footer: Calculations -->
-      <div class="summary-right">
-        <table class="calculations-table">
-          <tr>
-            <td class="calc-label">Total Amount to be taxed</td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="taxable-amount"></span>
-            </td>
-          </tr>
-          <tr>
-            <td class="calc-label">
-              Add : CGST @ <span contenteditable="true" id="cgst-percent" class="tax-percent">2.5</span>%
-            </td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="cgst-amount"></span>
-            </td>
-          </tr>
-          <tr>
-            <td class="calc-label">
-              Add : SGST @ <span contenteditable="true" id="sgst-percent" class="tax-percent">2.5</span>%
-            </td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="sgst-amount"></span>
-            </td>
-          </tr>
-          <tr class="grand-total-row">
-            <td class="calc-label">Total Amount After Tax</td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="grand-total"></span>
-            </td>
-          </tr>
-        </table>
+      <div class="bank-row">
+        <strong style="margin-right: 8px;">IFSC Code :</strong>
+        <div class="field-value" contenteditable="true" id="bank-details-ifsc" placeholder="IFSC Code">ICIC0006557</div>
+      </div>
+      <div class="remark-row">
+        <strong style="margin-right: 8px;">REMARK :</strong>
+        <div class="field-value" contenteditable="true" id="remark-text" placeholder="Remarks if any"></div>
       </div>
     </div>
 
-    <!-- Bottom Notes and Signature -->
-    <div class="invoice-bottom">
-      <div class="terms-column">
-        <div class="terms-heading">TERMS OF SALE :</div>
+    <!-- Subtotal Row Table -->
+    <div class="border-bottom">
+      <table class="subtotal-table">
+        <tbody>
+          <tr>
+            <td class="col-desc text-left">SUB TOTAL</td>
+            <td class="col-pack"></td>
+            <td class="col-pcs text-right" id="subtotal-pcs">610</td>
+            <td class="col-cut"></td>
+            <td class="col-mts text-right" id="subtotal-mts">3,843.00</td>
+            <td class="col-rate"></td>
+            <td class="col-per"></td>
+            <td class="col-amt text-right" id="subtotal-amount">₹4,66,650.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tax calculations Grid -->
+    <div class="calculations-container border-bottom">
+      <div class="calculations-empty-col"></div>
+      <div class="calculations-col">
+        <div class="tax-row">
+          <div class="tax-row-label">
+            CGST @ <span contenteditable="true" id="cgst-percent" style="border-bottom: 1px dashed #718096; min-width: 25px; display: inline-block; text-align: center;">2.50</span>% on Taxable Value
+          </div>
+          <div class="tax-row-value" id="cgst-val">₹11,666.25</div>
+        </div>
+        <div class="tax-row">
+          <div class="tax-row-label">
+            SGST @ <span contenteditable="true" id="sgst-percent" style="border-bottom: 1px dashed #718096; min-width: 25px; display: inline-block; text-align: center;">2.50</span>% on Taxable Value
+          </div>
+          <div class="tax-row-value" id="sgst-val">₹11,666.25</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grand Total & Due Days Block -->
+    <div class="grand-total-container border-bottom">
+      <div class="due-days-col">
+        DUE DAYS:<span contenteditable="true" id="due-days" style="margin-left: 4px; border-bottom: 1px dashed #cbd5e0; min-width: 30px; display: inline-block; text-align: center;">45</span>
+      </div>
+      <div class="grand-total-col">
+        <span>GRAND TOTAL:</span>
+        <div class="grand-total-amount-box" id="grand-total-val">₹4,89,983.00</div>
+      </div>
+    </div>
+
+    <!-- Words Total Section -->
+    <div class="words-total-container border-bottom">
+      <span id="grand-total-words">FOUR LAKH EIGHTY NINE THOUSAND NINE HUNDRED EIGHTY THREE ONLY</span>
+    </div>
+
+    <!-- Terms and Signatory Box -->
+    <div class="footer-grid border-bottom">
+      <div class="terms-col border-right">
+        <div class="terms-title">TERMS & CONDITIONS:-</div>
         <ol class="terms-list">
-          <li>Any Complaints for the goods please inform us in 3 days.</li>
-          <li>Payment Conditions 30 days Monthly.</li>
+          <li>1) SUBJECT TO SURAT JURISDICTION.</li>
+          <li>2) GOODS HAVE BEEN SOLD & DESPATCHED AT THE ENTIRE RISK OF THE PURCHASER.</li>
+          <li>3) COMPLAINTS, IF ANY REGARDING THIS INVOICE MUST BE INFORMED IN WRITING WITHIN 48 HOURS.</li>
+          <li>4) THIS BILL HAS BEEN GENERATED AS PER YOUR ORDER.</li>
         </ol>
-        <div class="checked-by-row">
-          Checked by <span class="checked-by-line editable-field" contenteditable="true" placeholder="____________________">____________________</span>
-        </div>
       </div>
-      <div class="signature-column">
-        <div class="ee-label">E.& O.E.</div>
-        <div class="signature-block">
-          <div class="sig-for">For, <span id="sig-company-name">JAY CREATION</span></div>
-          <div class="sig-space editable-field" contenteditable="true"></div>
-          <div class="sig-title">Partner / Auth. Signatory</div>
-        </div>
+      <div class="signature-col">
+        <div class="signature-for">FOR JAY CREATION</div>
+        <div class="signature-space"></div>
+        <div class="signature-title">AUTH. SIGNATORY</div>
       </div>
     </div>
+
+    <!-- Verification / Delivery Lines -->
+    <div class="verification-signatory-grid border-bottom">
+      <div>
+        <div class="sign-line-title">CHECKED BY</div>
+      </div>
+      <div>
+        <div class="sign-line-title">DELIVERED BY</div>
+      </div>
+      <div>
+        <div class="sign-line-title-right">AUTH. SIGNATORY</div>
+      </div>
+    </div>
+
+    <!-- E-Way & Transporter details -->
+    <div class="eway-transporter-grid">
+      <div class="eway-col">
+        E-WAY BILL No: <span contenteditable="true" id="eway-bill-no" placeholder="Click to edit"></span>
+      </div>
+      <div class="transporter-col">
+        Transporter ID: <span contenteditable="true" id="transporter-id" placeholder="Click to edit"></span>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Scripts -->
   <script src="index.js"></script>
 </body>
 
