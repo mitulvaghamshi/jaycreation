@@ -1,5 +1,4 @@
 /* CSS for Professional PDF Invoice Template B - Jay Creation */
-
 :root {
   --invoice-ink: #1a202c;
   --invoice-border: #000000;
@@ -12,9 +11,9 @@
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -36,7 +35,7 @@ body {
   background-color: var(--action-bar-bg);
   color: white;
   z-index: 1000;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px #0000001a;
 }
 
 .action-container {
@@ -101,7 +100,7 @@ body {
 .btn-primary {
   background-color: var(--btn-primary-bg);
   color: #1a202c;
-  box-shadow: 0 4px 6px -1px rgba(236, 201, 75, 0.2);
+  box-shadow: 0 4px 6px -1px #ecc94b33;
 }
 
 .btn-primary:hover {
@@ -123,7 +122,7 @@ body {
   padding: 10mm;
   background-color: var(--invoice-bg);
   position: relative;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px #0000001a;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--invoice-border);
@@ -131,7 +130,6 @@ body {
   line-height: 1.35;
   color: #000000;
   break-inside: avoid !important;
-  page-break-inside: avoid !important;
 }
 
 /* --- Inline Editable Field Styles (screen only) --- */
@@ -142,12 +140,12 @@ body {
 }
 
 body:not(.printing) [contenteditable="true"]:hover {
-  background-color: rgba(255, 235, 200, 0.5);
-  box-shadow: 0 0 0 1px rgba(214, 158, 46, 0.5);
+  background-color: #ffebc880;
+  box-shadow: 0 0 0 1px #d69e2e80;
 }
 
 body:not(.printing) [contenteditable="true"]:focus {
-  background-color: rgba(255, 220, 150, 0.7);
+  background-color: #ffdc96b3;
   box-shadow: 0 0 0 2px #d69e2e;
 }
 
@@ -299,7 +297,7 @@ body:not(.printing) [contenteditable="true"]:focus {
 /* --- Billing and Metadata Block --- */
 .billing-metadata-grid {
   display: grid;
-  grid-template-columns: 1fr 1px 220px;
+  grid-template-columns: 1fr 1px 250px;
   align-items: stretch;
 }
 
@@ -335,7 +333,7 @@ body:not(.printing) [contenteditable="true"]:focus {
 
 .field-label-right {
   font-weight: bold;
-  width: 75px;
+  width: 90px;
   text-align: right;
   margin-right: 8px;
   flex-shrink: 0;
@@ -368,7 +366,7 @@ body:not(.printing) [contenteditable="true"]:focus {
 /* --- LR / Transporter 3-Column Grid --- */
 .lr-transporter-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: stretch;
 }
 
@@ -418,37 +416,37 @@ body:not(.printing) [contenteditable="true"]:focus {
 }
 
 .col-pack {
-  width: 10%;
+  width: 5%;
   text-align: center;
 }
 
 .col-pcs {
-  width: 8%;
+  width: 5%;
   text-align: right;
 }
 
 .col-cut {
-  width: 8%;
+  width: 5%;
   text-align: right;
 }
 
 .col-mts {
-  width: 10%;
+  width: 5%;
   text-align: right;
 }
 
 .col-rate {
-  width: 10%;
+  width: 5%;
   text-align: right;
 }
 
 .col-per {
-  width: 6%;
+  width: 5%;
   text-align: center;
 }
 
 .col-amt {
-  width: 15%;
+  width: 12%;
   text-align: right;
 }
 
@@ -494,17 +492,24 @@ body:not(.printing) [contenteditable="true"]:focus {
 }
 
 .delete-row-btn {
-  background: none;
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  background-color: #e53e3e;
+  color: white;
+  border-radius: 50%;
   border: none;
-  color: #e53e3e;
+  font-size: 11px;
   font-weight: bold;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 0 4px;
   opacity: 0;
   transition: opacity 0.2s ease;
-  float: right;
-  line-height: 1;
 }
 
 body:not(.printing) .item-row:hover .delete-row-btn {
@@ -634,7 +639,7 @@ body:not(.printing) .item-row:hover .delete-row-btn {
 /* --- Bottom Terms & Signature Grid --- */
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: 1.35fr 0.65fr;
   align-items: stretch;
 }
 
@@ -728,7 +733,6 @@ body:not(.printing) .item-row:hover .delete-row-btn {
   @page {
     size: A4 portrait;
     margin: 0;
-    /* Let sheet margin control padding */
   }
 
   html,
@@ -743,6 +747,10 @@ body:not(.printing) .item-row:hover .delete-row-btn {
     display: none !important;
   }
 
+  [contenteditable="true"]:empty::before {
+    content: "" !important;
+  }
+
   .invoice-sheet {
     width: 210mm !important;
     height: 297mm !important;
@@ -752,7 +760,6 @@ body:not(.printing) .item-row:hover .delete-row-btn {
     border: 1px solid var(--invoice-border) !important;
     overflow: hidden;
     break-inside: avoid !important;
-    page-break-inside: avoid !important;
   }
 
   /* Force background colors to print */
@@ -763,5 +770,9 @@ body:not(.printing) .item-row:hover .delete-row-btn {
 
   .qr-container {
     background-color: #ffffff !important;
+  }
+
+  .qr-placeholder-text {
+    display: none;
   }
 }

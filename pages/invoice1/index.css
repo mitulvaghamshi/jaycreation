@@ -41,7 +41,7 @@ body {
   background-color: var(--bg-dark);
   color: white;
   z-index: 1000;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -1px #0000000f;
 }
 
 .action-container {
@@ -105,7 +105,7 @@ body {
 .btn-primary {
   background-color: #ecc94b;
   color: #1a202c;
-  box-shadow: 0 4px 6px -1px rgba(236, 201, 75, 0.2);
+  box-shadow: 0 4px 6px -1px #ecc94b33;
 }
 
 .btn-primary:hover {
@@ -124,17 +124,16 @@ body {
   box-sizing: border-box;
   /* Critical Fix 2: Shave off a fraction of a millimeter to prevent WebKit rounding overflow */
   width: 210mm !important;
-  height: 296.5mm !important;
+  height: 297mm !important;
   margin: 32px auto;
-  padding: 0.25in;
+  padding: 10mm;
   position: relative;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px -5px #0000001a, 0 8px 10px -6px #0000001a;
   transition: background-color 0.3s ease, color 0.3s ease;
   font-size: 13px;
   line-height: 1.4;
   /* Critical Fix 3: Inform printing engines explicitly not to split this element */
   break-inside: avoid !important;
-  page-break-inside: avoid !important;
 }
 
 /* Classic Yellow Theme */
@@ -334,12 +333,12 @@ body {
 
 body:not(.printing) [contenteditable="true"]:hover {
   background-color: rgba(255, 235, 200, 0.4);
-  box-shadow: 0 0 0 2px rgba(236, 201, 75, 0.4);
+  box-shadow: 0 0 0 2px #ecc94b66;
   border-radius: 3px;
 }
 
 body:not(.printing) [contenteditable="true"]:focus {
-  background-color: rgba(255, 220, 150, 0.6);
+  background-color: #ffdc9699;
   box-shadow: 0 0 0 2px #d69e2e;
   border-radius: 3px;
 }
@@ -482,7 +481,7 @@ body:not(.printing) [contenteditable="true"]:focus {
 .billing-value {
   flex-grow: 1;
   min-height: 18px;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  border-bottom: 1px dashed #0000001a;
   font-size: 13px;
   padding-bottom: 1px;
 }
@@ -632,12 +631,12 @@ body:not(.printing) [contenteditable="true"]:focus {
 .details-val {
   flex-grow: 1;
   min-height: 18px;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  border-bottom: 1px dashed #0000001a;
 }
 
 .details-bank-section {
   margin-top: 12px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.1);
+  border-top: 1px dashed #0000001a;
   padding-top: 12px;
 }
 
@@ -649,7 +648,7 @@ body:not(.printing) [contenteditable="true"]:focus {
 
 .calculations-table td {
   padding: 6px 10px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #0000000d;
 }
 
 .calc-label {
@@ -667,7 +666,7 @@ body:not(.printing) [contenteditable="true"]:focus {
   display: inline-block;
   min-width: 24px;
   text-align: center;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  border-bottom: 1px dashed #00000033;
 }
 
 .grand-total-row {
@@ -680,7 +679,7 @@ body:not(.printing) [contenteditable="true"]:focus {
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid #0000001a;
   padding-top: 16px;
 }
 
@@ -779,7 +778,7 @@ body:not(.printing) [contenteditable="true"]:focus {
     width: 210mm !important;
     height: 296.5mm !important;
     margin: 0 !important;
-    padding: 0.25in !important;
+    padding: 10mm !important;
     box-shadow: none !important;
     /* Critical Fix 4: Force the wrapper to hide rogue pixel spillover */
     overflow: hidden;

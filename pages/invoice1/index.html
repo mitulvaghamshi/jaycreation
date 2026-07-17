@@ -1,248 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
+    <title>Invoice Generator - Jay Creation</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="../manifest.json">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex">
-  <title>Invoice Generator - Jay Creation</title>
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css" />
-  <link rel="shortcut icon" href="../icons/favicon.ico" type="image/x-icon">
-  <link rel="manifest" href="../manifest.json">
-</head>
-
-<body>
-  <!-- Top Action Bar (hidden in print) -->
-  <div class="action-bar no-print">
-    <div class="action-container">
-      <div class="brand-title">
-        <span class="brand-main">JAY CREATION</span>
-        <span class="brand-sub">Invoice Manager</span>
-      </div>
-      <div class="action-buttons">
-        <a href="../index.html" class="btn btn-secondary" style="text-decoration: none;">📄 Switch</a>
-        <button id="btn-theme" class="btn btn-secondary">
+  <body>
+    <!-- Top Action Bar (hidden in print) -->
+    <div class="action-bar no-print">
+      <div class="action-container">
+        <div class="brand-title">
+          <span class="brand-main">JAY CREATION</span>
+          <span class="brand-sub">Invoice Manager</span>
+        </div>
+        <div class="action-buttons">
+          <a href="../index.html" class="btn btn-secondary" style="text-decoration: none;">Style</a>
+          <button id="btn-theme" class="btn btn-secondary">
           Theme
         </button>
-        <button id="btn-reset" class="btn btn-secondary">
+          <button id="btn-reset" class="btn btn-secondary">
           Reset
         </button>
-        <button id="btn-print" class="btn btn-primary">
+          <button id="btn-print" class="btn btn-primary">
           🖨️ Print
         </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Main Invoice Layout -->
-  <div id="invoice-page" class="invoice-container clean-white">
-    <!-- Invoice Header Grid -->
-    <div class="invoice-header">
-      <div class="header-top-row">
-        <div class="header-gst">
+    <!-- Main Invoice Layout -->
+    <div id="invoice-page" class="invoice-container clean-white">
+      <!-- Invoice Header Grid -->
+      <div class="invoice-header">
+        <div class="header-top-row">
+          <div class="header-gst">
           <strong>GST No.</strong> <span contenteditable="true" id="company-gst">24AUYPK6789Q1Z5</span>
           <div class="header-jurisdiction">Subject to Surat Jurisdiction</div>
         </div>
-        <div class="header-invocations">
+          <div class="header-invocations">
           || શ્રી ગણેશાય નમઃ || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || શ્રી ખોડિયાર માં નમઃ ||
         </div>
-        <div class="header-tax-title">
-          <div class="tax-invoice-label">TAX INVOICE</div>
-          <div class="header-phone"><strong>(M)</strong> <span contenteditable="true" id="company-phone">92751 82042</span></div>
-        </div>
-      </div>
-
-      <div class="header-main-row">
-        <!-- Ganesha Icon Column: Hidden -->
-        <div class="header-deity deity-left">
-          <svg class="deity-svg" viewBox="0 0 100 100">
-            <!-- Minimalist Ganesha Line Art -->
-            <path d="M50,15 C40,15 35,25 35,35 C35,45 42,50 42,55 C42,62 38,68 32,68 C28,68 25,65 25,60 C25,52 30,48 28,40 C26,35 20,38 18,45 C15,55 20,75 32,75 C45,75 48,65 48,58 C48,52 46,48 48,42 C50,38 52,38 54,42 C56,48 54,52 54,58 C54,65 57,75 70,75 C82,75 87,55 84,45 C82,38 76,35 74,40 C72,48 77,52 77,60 C77,65 74,68 70,68 C64,68 60,62 60,55 C60,50 67,45 67,35 C67,25 62,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
-            <path d="M50,22 C44,22 43,28 46,30 C48,31 52,31 54,30 C57,28 56,22 50,22 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2" />
-            <path d="M42,28 Q50,26 58,28" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M50,28 L50,38" fill="none" stroke="currentColor" stroke-width="2" />
-            <circle cx="44" cy="33" r="2.5" fill="currentColor" />
-            <circle cx="56" cy="33" r="2.5" fill="currentColor" />
-            <path d="M46,45 Q50,49 54,45" fill="none" stroke="currentColor" stroke-width="1.5" />
-          </svg>
-        </div>
-
-        <!-- Title/Brand Info -->
-        <div class="header-brand-info">
-          <h1 class="invoice-title" contenteditable="true" id="company-name">JAY CREATION</h1>
-          <p class="invoice-subtitle" contenteditable="true" id="company-subtitle">All Type of : Embroidery & Sequence Works</p>
-          <p class="invoice-address" contenteditable="true" id="company-address">224, 3rd Floor, Bhagyoday Industries, B/H. DR World, Aai Mata Road, Surat.</p>
-        </div>
-
-        <!-- Hanuman Icon Column: Hidden -->
-        <div class="header-deity deity-right">
-          <svg class="deity-svg" viewBox="0 0 100 100">
-            <!-- Minimalist Hanuman/Deity Line Art -->
-            <path d="M50,15 C45,15 42,20 40,25 C38,30 38,36 41,40 C43,43 45,45 42,48 C38,52 35,58 35,65 C35,72 40,78 50,78 C60,78 65,72 65,65 C65,58 62,52 58,48 C55,45 57,43 59,40 C62,36 62,30 60,25 C58,20 55,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
-            <path d="M50,22 L50,38" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M46,30 L54,30" fill="none" stroke="currentColor" stroke-width="2" />
-            <circle cx="45" cy="33" r="2" fill="currentColor" />
-            <circle cx="55" cy="33" r="2" fill="currentColor" />
-            <!-- Mace (Gada) or Tilak detail -->
-            <path d="M50,15 L50,8" fill="none" stroke="currentColor" stroke-width="2" />
-            <circle cx="50" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M38,62 Q50,56 62,62" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M45,68 Q50,72 55,68" fill="none" stroke="currentColor" stroke-width="1.5" />
-          </svg>
-        </div>
-      </div>
-    </div>
-
-    <!-- Bill & Client Details Block -->
-    <div class="invoice-billing-block">
-      <div class="billing-left">
-        <div class="billing-row">
-          <span class="billing-label editable-field" contenteditable="true">M/s.</span>
-          <div class="billing-value editable-field" contenteditable="true" id="client-name" placeholder="Customer Name"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label">Address:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="client-address" placeholder="Customer Address"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label">GST No.:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="client-gst" placeholder="Customer GST No."></div>
-        </div>
-      </div>
-      <div class="billing-right">
-        <div class="billing-row">
-          <span class="billing-label text-right">Bill No.:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="bill-no"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label text-right">Date:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="bill-date"></div>
-        </div>
-        <div class="billing-row">
-          <span class="billing-label text-right">Cha. No.:</span>
-          <div class="billing-value editable-field" contenteditable="true" id="challan-no"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Invoice Particulars Table -->
-    <div class="invoice-table-wrapper">
-      <table class="invoice-table" id="items-table">
-        <thead>
-          <tr>
-            <th class="col-cha">Cha. No.</th>
-            <th class="col-date">Received Date</th>
-            <th class="col-particulars">PARTICULARS</th>
-            <th class="col-pieces">Pieces</th>
-            <th class="col-rate">Rate</th>
-            <th class="col-amount">Amount</th>
-          </tr>
-        </thead>
-        <tbody id="invoice-items-body">
-          <!-- Dynamic rows will be inserted here. -->
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Add Row Action (hidden in print) -->
-    <div class="table-actions no-print">
-      <button id="btn-add-row" class="btn btn-secondary btn-sm">
-        + Add Line Item
-      </button>
-    </div>
-
-    <!-- Invoice Footer & Summary Grid -->
-    <div class="invoice-summary-grid">
-      <!-- Left Footer: PAN and Bank Details -->
-      <div class="summary-left">
-        <div class="details-row">
-          <span class="details-label"><strong>PAN No. :</strong></span>
-          <div class="details-val" contenteditable="true" id="company-pan">AUYPK6789Q</div>
-        </div>
-        <div class="details-bank-section">
-          <div class="details-row">
-            <span class="details-label"><strong>BANK NAME :</strong></span>
-            <div class="details-val" contenteditable="true" id="bank-name" placeholder="Enter Bank Name"></div>
+          <div class="header-tax-title">
+            <div class="tax-invoice-label">TAX INVOICE</div>
+            <div class="header-phone"><strong>(M)</strong> <span contenteditable="true" id="company-phone">92751 82042</span></div>
           </div>
-          <div class="details-row">
-            <span class="details-label"><strong>A/c. No. :</strong></span>
-            <div class="details-val" contenteditable="true" id="bank-ac" placeholder="Enter Account Number"></div>
+        </div>
+
+        <div class="header-main-row">
+          <!-- Ganesha Icon Column: Hidden -->
+          <div class="header-deity deity-left">
+            <svg class="deity-svg" viewBox="0 0 100 100">
+              <!-- Minimalist Ganesha Line Art -->
+              <path d="M50,15 C40,15 35,25 35,35 C35,45 42,50 42,55 C42,62 38,68 32,68 C28,68 25,65 25,60 C25,52 30,48 28,40 C26,35 20,38 18,45 C15,55 20,75 32,75 C45,75 48,65 48,58 C48,52 46,48 48,42 C50,38 52,38 54,42 C56,48 54,52 54,58 C54,65 57,75 70,75 C82,75 87,55 84,45 C82,38 76,35 74,40 C72,48 77,52 77,60 C77,65 74,68 70,68 C64,68 60,62 60,55 C60,50 67,45 67,35 C67,25 62,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
+              <path d="M50,22 C44,22 43,28 46,30 C48,31 52,31 54,30 C57,28 56,22 50,22 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2,2" />
+              <path d="M42,28 Q50,26 58,28" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M50,28 L50,38" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="44" cy="33" r="2.5" fill="currentColor" />
+              <circle cx="56" cy="33" r="2.5" fill="currentColor" />
+              <path d="M46,45 Q50,49 54,45" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
           </div>
-          <div class="details-row">
-            <span class="details-label"><strong>IFSC Code :</strong></span>
-            <div class="details-val" contenteditable="true" id="bank-ifsc" placeholder="Enter IFSC Code"></div>
+
+          <!-- Title/Brand Info -->
+          <div class="header-brand-info">
+            <h1 class="invoice-title" contenteditable="true" id="company-name">JAY CREATION</h1>
+            <p class="invoice-subtitle" contenteditable="true" id="company-subtitle">All Type of : Embroidery & Sequence Works</p>
+            <p class="invoice-address" contenteditable="true" id="company-address">224, 3rd Floor, Bhagyoday Industries, B/H. DR World, Aai Mata Road, Surat.</p>
+          </div>
+
+          <!-- Hanuman Icon Column: Hidden -->
+          <div class="header-deity deity-right">
+            <svg class="deity-svg" viewBox="0 0 100 100">
+              <!-- Minimalist Hanuman/Deity Line Art -->
+              <path d="M50,15 C45,15 42,20 40,25 C38,30 38,36 41,40 C43,43 45,45 42,48 C38,52 35,58 35,65 C35,72 40,78 50,78 C60,78 65,72 65,65 C65,58 62,52 58,48 C55,45 57,43 59,40 C62,36 62,30 60,25 C58,20 55,15 50,15 Z" fill="none" stroke="currentColor" stroke-width="2.5" />
+              <path d="M50,22 L50,38" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M46,30 L54,30" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="45" cy="33" r="2" fill="currentColor" />
+              <circle cx="55" cy="33" r="2" fill="currentColor" />
+              <!-- Mace (Gada) or Tilak detail -->
+              <path d="M50,15 L50,8" fill="none" stroke="currentColor" stroke-width="2" />
+              <circle cx="50" cy="6" r="3" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M38,62 Q50,56 62,62" fill="none" stroke="currentColor" stroke-width="2" />
+              <path d="M45,68 Q50,72 55,68" fill="none" stroke="currentColor" stroke-width="1.5" />
+            </svg>
           </div>
         </div>
       </div>
 
-      <!-- Right Footer: Calculations -->
-      <div class="summary-right">
-        <table class="calculations-table">
-          <tr>
-            <td class="calc-label">Total Amount to be taxed</td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="taxable-amount"></span>
-            </td>
-          </tr>
-          <tr>
-            <td class="calc-label">
-              Add : CGST @ <span contenteditable="true" id="cgst-percent" class="tax-percent">2.5</span>%
-            </td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="cgst-amount"></span>
-            </td>
-          </tr>
-          <tr>
-            <td class="calc-label">
-              Add : SGST @ <span contenteditable="true" id="sgst-percent" class="tax-percent">2.5</span>%
-            </td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="sgst-amount"></span>
-            </td>
-          </tr>
-          <tr class="grand-total-row">
-            <td class="calc-label">Total Amount After Tax</td>
-            <td class="calc-val">
-              <span class="currency-symbol">₹</span>
-              <span id="grand-total"></span>
-            </td>
-          </tr>
+      <!-- Bill & Client Details Block -->
+      <div class="invoice-billing-block">
+        <div class="billing-left">
+          <div class="billing-row">
+            <span class="billing-label editable-field" contenteditable="true">M/s.</span>
+            <div class="billing-value editable-field" contenteditable="true" id="client-name" placeholder="Customer Name"></div>
+          </div>
+          <div class="billing-row">
+            <span class="billing-label">Address:</span>
+            <div class="billing-value editable-field" contenteditable="true" id="client-address" placeholder="Customer Address"></div>
+          </div>
+          <div class="billing-row">
+            <span class="billing-label">GST No.:</span>
+            <div class="billing-value editable-field" contenteditable="true" id="client-gst" placeholder="Customer GST No."></div>
+          </div>
+        </div>
+        <div class="billing-right">
+          <div class="billing-row">
+            <span class="billing-label text-right">Bill No.:</span>
+            <div class="billing-value editable-field" contenteditable="true" id="bill-no"></div>
+          </div>
+          <div class="billing-row">
+            <span class="billing-label text-right">Date:</span>
+            <div class="billing-value editable-field" contenteditable="true" id="bill-date"></div>
+          </div>
+          <div class="billing-row">
+            <span class="billing-label text-right">Cha. No.:</span>
+            <div class="billing-value editable-field" contenteditable="true" id="challan-no"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Invoice Particulars Table -->
+      <div class="invoice-table-wrapper">
+        <table class="invoice-table" id="items-table">
+          <thead>
+            <tr>
+              <th class="col-cha">Cha. No.</th>
+              <th class="col-date">Received Date</th>
+              <th class="col-particulars">PARTICULARS</th>
+              <th class="col-pieces">Pieces</th>
+              <th class="col-rate">Rate</th>
+              <th class="col-amount">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="invoice-items-body">
+            <!-- Dynamic rows will be inserted here. -->
+          </tbody>
         </table>
       </div>
-    </div>
 
-    <!-- Bottom Notes and Signature -->
-    <div class="invoice-bottom">
-      <div class="terms-column">
-        <div class="terms-heading">TERMS OF SALE :</div>
-        <ol class="terms-list">
-          <li>Any Complaints for the goods please inform us in 3 days.</li>
-          <li>Payment Conditions 30 days Monthly.</li>
-        </ol>
-        <div class="checked-by-row">
+      <!-- Add Row Action (hidden in print) -->
+      <div class="table-actions no-print">
+        <button id="btn-add-row" class="btn btn-secondary btn-sm">
+        + Add Line Item
+      </button>
+      </div>
+
+      <!-- Invoice Footer & Summary Grid -->
+      <div class="invoice-summary-grid">
+        <!-- Left Footer: PAN and Bank Details -->
+        <div class="summary-left">
+          <div class="details-row">
+            <span class="details-label"><strong>PAN No. :</strong></span>
+            <div class="details-val" contenteditable="true" id="company-pan">AUYPK6789Q</div>
+          </div>
+          <div class="details-bank-section">
+            <div class="details-row">
+              <span class="details-label"><strong>BANK NAME :</strong></span>
+              <div class="details-val" contenteditable="true" id="bank-name" placeholder="Enter Bank Name"></div>
+            </div>
+            <div class="details-row">
+              <span class="details-label"><strong>A/c. No. :</strong></span>
+              <div class="details-val" contenteditable="true" id="bank-ac" placeholder="Enter Account Number"></div>
+            </div>
+            <div class="details-row">
+              <span class="details-label"><strong>IFSC Code :</strong></span>
+              <div class="details-val" contenteditable="true" id="bank-ifsc" placeholder="Enter IFSC Code"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Footer: Calculations -->
+        <div class="summary-right">
+          <table class="calculations-table">
+            <tr>
+              <td class="calc-label">Total Amount to be taxed</td>
+              <td class="calc-val">
+                <span class="currency-symbol">₹</span>
+                <span id="taxable-amount"></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="calc-label">
+              Add : CGST @ <span contenteditable="true" id="cgst-percent" class="tax-percent">2.5</span>%
+            </td>
+              <td class="calc-val">
+                <span class="currency-symbol">₹</span>
+                <span id="cgst-amount"></span>
+              </td>
+            </tr>
+            <tr>
+              <td class="calc-label">
+              Add : SGST @ <span contenteditable="true" id="sgst-percent" class="tax-percent">2.5</span>%
+            </td>
+              <td class="calc-val">
+                <span class="currency-symbol">₹</span>
+                <span id="sgst-amount"></span>
+              </td>
+            </tr>
+            <tr class="grand-total-row">
+              <td class="calc-label">Total Amount After Tax</td>
+              <td class="calc-val">
+                <span class="currency-symbol">₹</span>
+                <span id="grand-total"></span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bottom Notes and Signature -->
+      <div class="invoice-bottom">
+        <div class="terms-column">
+          <div class="terms-heading">TERMS OF SALE :</div>
+          <ol class="terms-list">
+            <li>Any Complaints for the goods please inform us in 3 days.</li>
+            <li>Payment Conditions 30 days Monthly.</li>
+          </ol>
+          <div class="checked-by-row">
           Checked by <span class="checked-by-line editable-field" contenteditable="true" placeholder="____________________">____________________</span>
         </div>
-      </div>
-      <div class="signature-column">
-        <div class="ee-label">E.& O.E.</div>
-        <div class="signature-block">
-          <div class="sig-for">For, <span id="sig-company-name">JAY CREATION</span></div>
-          <div class="sig-space editable-field" contenteditable="true"></div>
-          <div class="sig-title">Partner / Auth. Signatory</div>
+        </div>
+        <div class="signature-column">
+          <div class="ee-label">E.& O.E.</div>
+          <div class="signature-block">
+            <div class="sig-for">For, <span id="sig-company-name">JAY CREATION</span></div>
+            <div class="sig-space editable-field" contenteditable="true"></div>
+            <div class="sig-title">Partner / Auth. Signatory</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Scripts -->
-  <script src="index.js"></script>
-</body>
-
+    <!-- Scripts -->
+    <script src="index.js"></script>
+  </body>
 </html>

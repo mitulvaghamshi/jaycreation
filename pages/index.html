@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="index.css" />
   <link rel="shortcut icon" href="icons/favicon.ico" type="image/x-icon">
   <link rel="manifest" href="manifest.json">
@@ -24,7 +25,7 @@
         <span class="brand-sub">Invoice Manager</span>
       </div>
       <div class="action-buttons">
-        <a href="invoice1/index.html" class="btn btn-secondary">📄 Switch</a>
+        <a href="invoice1/index.html" class="btn btn-secondary">Style</a>
         <button id="btn-reset" class="btn btn-secondary">Reset</button>
         <button id="btn-print" class="btn btn-primary">🖨️ Print</button>
       </div>
@@ -33,7 +34,6 @@
 
   <!-- A4 Print Sheet Container -->
   <div id="invoice-sheet" class="invoice-sheet">
-
     <!-- Header: QR Code, Company Details, Invoice Labels -->
     <div class="header-grid border-bottom">
       <div class="header-left">
@@ -66,9 +66,7 @@
     </div>
 
     <!-- TAX INVOICE Title Row -->
-    <div class="tax-invoice-banner border-bottom" contenteditable="true">
-      TAX INVOICE
-    </div>
+    <div class="tax-invoice-banner border-bottom" contenteditable="true">TAX INVOICE</div>
 
     <!-- Buyer & Bill Details Block -->
     <div class="billing-metadata-grid border-bottom">
@@ -76,23 +74,23 @@
       <div class="billing-col">
         <div class="field-row">
           <span class="field-label">Buyer:</span>
-          <div class="field-value" contenteditable="true" id="buyer-name" placeholder="Buyer Company Name">PINTU FASHION</div>
+          <div class="field-value" contenteditable="true" id="buyer-name" placeholder="Buyer Company Name"></div>
         </div>
         <div class="field-row">
           <span class="field-label"></span>
-          <div class="field-value" contenteditable="true" id="buyer-address" placeholder="Buyer Address (Line 1)">PLOT NO.5/A,5/B,43/C 2ND FLOOR NILKANTH</div>
+          <div class="field-value" contenteditable="true" id="buyer-address" placeholder="Buyer Address (Line 1)"></div>
         </div>
         <div class="field-row">
           <span class="field-label"></span>
-          <div class="field-value" contenteditable="true" id="buyer-address-2" placeholder="Buyer Address (Line 2)">SOC.VED ROAD NANI BAHUCHARAJI MANDIR</div>
+          <div class="field-value" contenteditable="true" id="buyer-address-2" placeholder="Buyer Address (Line 2)"></div>
         </div>
         <div class="field-row">
           <span class="field-label"></span>
-          <div class="field-value" contenteditable="true" id="buyer-address-3" placeholder="Buyer Address (Line 3)">SURAT</div>
+          <div class="field-value" contenteditable="true" id="buyer-address-3" placeholder="Buyer Address (Line 3)"></div>
         </div>
         <div class="field-row" style="margin-top: 6px;">
           <span class="field-label">GSTIN:</span>
-          <div class="field-value" contenteditable="true" id="buyer-gst" placeholder="Buyer GSTIN">24AZNPG8820A1ZN</div>
+          <div class="field-value" contenteditable="true" id="buyer-gst" placeholder="Buyer GSTIN"></div>
         </div>
       </div>
 
@@ -103,23 +101,23 @@
       <div class="metadata-col">
         <div class="field-row">
           <span class="field-label-right">BILL NO.:</span>
-          <div class="field-value-solid" contenteditable="true" id="bill-no">9</div>
+          <div class="field-value-solid" contenteditable="true" id="bill-no"></div>
         </div>
         <div class="field-row">
           <span class="field-label-right">CHALLAN :</span>
-          <div class="field-value-solid" contenteditable="true" id="challan-no">9</div>
+          <div class="field-value-solid" contenteditable="true" id="challan-no"></div>
         </div>
         <div class="field-row">
           <span class="field-label-right">DATE :</span>
-          <div class="field-value-solid" contenteditable="true" id="bill-date">10/07/26</div>
+          <div class="field-value-solid" contenteditable="true" id="bill-date"></div>
         </div>
         <div class="field-row">
           <span class="field-label-right">ORDER NO:</span>
-          <div class="field-value-solid" contenteditable="true" id="order-no" placeholder="Order details"></div>
+          <div class="field-value-solid" contenteditable="true" id="order-no"></div>
         </div>
         <div class="field-row">
-          <span class="field-label-right" style="font-size: 9.5px;">Place of Supply:</span>
-          <div class="field-value-solid" contenteditable="true" id="place-of-supply">24-Gujarat</div>
+          <span class="field-label-right">Place of Supply:</span>
+          <div class="field-value-solid" contenteditable="true" id="place-of-supply"></div>
         </div>
       </div>
     </div>
@@ -158,31 +156,31 @@
     <div class="lr-transporter-grid border-bottom">
       <div class="lr-col border-right">
         <div class="field-row">
-          <span class="field-label" style="width: 80px;">L.R. NO. :</span>
+          <span class="field-label" style="width: 80px;">L.R. NO.:</span>
           <div class="field-value" contenteditable="true" id="lr-no" placeholder="LR Number"></div>
         </div>
         <div class="field-row">
           <span class="field-label" style="width: 80px;">TRANSPORT:</span>
-          <div class="field-value" contenteditable="true" id="transport-name" placeholder="Transporter Name">OFFICE DELIVERY</div>
+          <div class="field-value" contenteditable="true" id="transport-name" placeholder="Transporter Name"></div>
         </div>
         <div class="field-row">
           <span class="field-label" style="width: 80px;">STATION:</span>
-          <div class="field-value" contenteditable="true" id="station-name" placeholder="Destination Station">SURAT</div>
+          <div class="field-value" contenteditable="true" id="station-name" placeholder="Destination Station"></div>
         </div>
       </div>
       <div class="lr-col border-right">
         <div class="field-row">
           <span class="field-label" style="width: 70px;">LR DATE:</span>
-          <div class="field-value" contenteditable="true" id="lr-date" placeholder="LR Date">10/07/26</div>
+          <div class="field-value" contenteditable="true" id="lr-date" placeholder="LR Date"></div>
         </div>
         <div class="field-row">
           <span class="field-label" style="width: 70px;">CASE NO:</span>
-          <div class="field-value" contenteditable="true" id="case-no" placeholder="Case details">9x1</div>
+          <div class="field-value" contenteditable="true" id="case-no" placeholder="Case details"></div>
         </div>
       </div>
       <div class="lr-col">
         <div class="field-row">
-          <span class="field-label" style="width: 60px;">WEIGHT :</span>
+          <span class="field-label" style="width: 60px;">WEIGHT:</span>
           <div class="field-value" contenteditable="true" id="weight-val" placeholder="Weight details"></div>
         </div>
         <div class="field-row">
@@ -191,7 +189,7 @@
         </div>
         <div class="field-row">
           <span class="field-label" style="width: 60px;">HSN:</span>
-          <div class="field-value" contenteditable="true" id="hsn-val" placeholder="HSN Code">540752</div>
+          <div class="field-value" contenteditable="true" id="hsn-val" placeholder="HSN Code"></div>
         </div>
       </div>
     </div>
@@ -219,20 +217,18 @@
 
     <!-- Dynamic Actions (No Print) -->
     <div class="table-actions-bar no-print border-bottom">
-      <button id="btn-add-row" class="btn btn-secondary btn-sm">+ Add Row</button>
+      <button id="btn-add-row" class="btn btn-secondary btn-sm">+ Add Line Item</button>
     </div>
 
     <!-- Bank Details & Remarks (Printed above subtotal) -->
     <div class="bank-remark-container border-bottom">
       <div class="bank-row">
         <strong style="margin-right: 8px;">Bank Name :</strong>
-        <div class="field-value" contenteditable="true" id="bank-details-name" placeholder="Bank Name">ICICI Bank</div>
+        <div class="field-value" contenteditable="true" id="bank-details-name" placeholder="Bank Name"></div>
         <strong style="margin-right: 8px;">Account No :</strong>
-        <div class="field-value" contenteditable="true" id="bank-details-acno" placeholder="Bank A/C Number">655705500241</div>
-      </div>
-      <div class="bank-row">
+        <div class="field-value" contenteditable="true" id="bank-details-acno" placeholder="Bank A/C Number"></div>
         <strong style="margin-right: 8px;">IFSC Code :</strong>
-        <div class="field-value" contenteditable="true" id="bank-details-ifsc" placeholder="IFSC Code">ICIC0006557</div>
+        <div class="field-value" contenteditable="true" id="bank-details-ifsc" placeholder="IFSC Code"></div>
       </div>
       <div class="remark-row">
         <strong style="margin-right: 8px;">REMARK :</strong>
@@ -247,12 +243,12 @@
           <tr>
             <td class="col-desc text-left">SUB TOTAL</td>
             <td class="col-pack"></td>
-            <td class="col-pcs text-right" id="subtotal-pcs">610</td>
+            <td class="col-pcs text-right" id="subtotal-pcs"></td>
             <td class="col-cut"></td>
-            <td class="col-mts text-right" id="subtotal-mts">3,843.00</td>
+            <td class="col-mts text-right" id="subtotal-mts"></td>
             <td class="col-rate"></td>
             <td class="col-per"></td>
-            <td class="col-amt text-right" id="subtotal-amount">₹4,66,650.00</td>
+            <td class="col-amt text-right" id="subtotal-amount"></td>
           </tr>
         </tbody>
       </table>
@@ -266,13 +262,13 @@
           <div class="tax-row-label">
             CGST @ <span contenteditable="true" id="cgst-percent" style="border-bottom: 1px dashed #718096; min-width: 25px; display: inline-block; text-align: center;">2.50</span>% on Taxable Value
           </div>
-          <div class="tax-row-value" id="cgst-val">₹11,666.25</div>
+          <div class="tax-row-value" id="cgst-val"></div>
         </div>
         <div class="tax-row">
           <div class="tax-row-label">
             SGST @ <span contenteditable="true" id="sgst-percent" style="border-bottom: 1px dashed #718096; min-width: 25px; display: inline-block; text-align: center;">2.50</span>% on Taxable Value
           </div>
-          <div class="tax-row-value" id="sgst-val">₹11,666.25</div>
+          <div class="tax-row-value" id="sgst-val"></div>
         </div>
       </div>
     </div>
@@ -280,17 +276,17 @@
     <!-- Grand Total & Due Days Block -->
     <div class="grand-total-container border-bottom">
       <div class="due-days-col">
-        DUE DAYS:<span contenteditable="true" id="due-days" style="margin-left: 4px; border-bottom: 1px dashed #cbd5e0; min-width: 30px; display: inline-block; text-align: center;">45</span>
+        DUE DAYS:<span contenteditable="true" id="due-days" style="margin-left: 4px; border-bottom: 1px dashed #cbd5e0; min-width: 30px; display: inline-block; text-align: center;"></span>
       </div>
       <div class="grand-total-col">
         <span>GRAND TOTAL:</span>
-        <div class="grand-total-amount-box" id="grand-total-val">₹4,89,983.00</div>
+        <div class="grand-total-amount-box" id="grand-total-val"></div>
       </div>
     </div>
 
     <!-- Words Total Section -->
     <div class="words-total-container border-bottom">
-      <span id="grand-total-words">FOUR LAKH EIGHTY NINE THOUSAND NINE HUNDRED EIGHTY THREE ONLY</span>
+      <span id="grand-total-words"></span>
     </div>
 
     <!-- Terms and Signatory Box -->
@@ -333,7 +329,6 @@
         Transporter ID: <span contenteditable="true" id="transporter-id" placeholder="Click to edit"></span>
       </div>
     </div>
-
   </div>
 
   <script src="index.js"></script>
